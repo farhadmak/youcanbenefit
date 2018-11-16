@@ -6,7 +6,6 @@ import { Observable } from 'rxjs/Observable';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { QueryEvent } from './index';
 import {ProgramConditionClass} from "./program-condition.class";
-import { environment } from '../../../../environments/environment'
 
 @Injectable()
 export class QueryService {
@@ -34,7 +33,7 @@ export class QueryService {
             guid: program_guid
         };
 
-        return this.http.post(`${environment.api}/protected/query/`, data, creds)
+        return this.http.post('/protected/query/', data, creds)
             .map(res => res.json())
             .do( res => {
                 if (res.created === true || res.result === 'updated') {
